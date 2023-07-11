@@ -34,7 +34,7 @@ def main(argv=[]):
 
     try:
         with open(args.input, encoding="utf-8") as f:
-            message = f.read()
+            message = f.readline()
     except UnicodeDecodeError:
         print(
             f"""
@@ -47,18 +47,13 @@ See {Colors.LBLUE}https://git-scm.com/docs/git-commit/#_discussion{Colors.RESTOR
         )
         return RESULT_FAIL
 
-    print(repr(message))
-    print(repr(message.split("\n")[0]))
-    print(len(message.split("\n")[0]))
-
-    split_message = message.split("\n")[0]
-    if not (len(split_message) <= 72):
+    if not (len(message) <= 72):
         print(
             f"""
 {Colors.LRED}[Bad Commit message length] {Colors.RESTORE}
 
 {Colors.YELLOW}Your commit message is not between 1 and 72 characters in length.{Colors.RESTORE}
-{Colors.LBLUE}Currently at {len(split_message)} characters{Colors.RESTORE}
+{Colors.LBLUE}Currently at {len(message)} characters{Colors.RESTORE}
         """
         )
         return RESULT_FAIL
