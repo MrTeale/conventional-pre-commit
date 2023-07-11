@@ -47,14 +47,13 @@ See {Colors.LBLUE}https://git-scm.com/docs/git-commit/#_discussion{Colors.RESTOR
         )
         return RESULT_FAIL
 
-    print(len(message))
-
     if not (1 <= len(message) <= 72):
         print(
             f"""
 {Colors.LRED}[Bad Commit message length] {Colors.RESTORE}
 
 {Colors.YELLOW}Your commit message is not between 1 and 72 characters in length.{Colors.RESTORE}
+{Colors.LBLUE}Currently at {len(message)} characters{Colors.RESTORE}
         """
         )
         return RESULT_FAIL
