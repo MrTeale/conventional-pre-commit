@@ -59,19 +59,19 @@ See {Colors.LBLUE}https://git-scm.com/docs/git-commit/#_discussion{Colors.RESTOR
         Conventional Commits start with one of the below types, followed by a colon,
         followed by the commit message:{Colors.RESTORE}
 
-            {" ".join(format.conventional_types(args.types))}
+            {" ".join(set(args.types))}
 
         {Colors.YELLOW}Example commit message adding a feature:{Colors.RESTORE}
 
-            feat: implement new API
+            FEAT: implement new API
 
         {Colors.YELLOW}Example commit message fixing an issue:{Colors.RESTORE}
 
-            fix: remove infinite loop
+            FIX: remove infinite loop
 
         {Colors.YELLOW}Example commit with scope in parentheses after the type for more context:{Colors.RESTORE}
 
-            fix(account): remove infinite loop"""
+            FIX(account): remove infinite loop"""
         )
         return RESULT_FAIL
 

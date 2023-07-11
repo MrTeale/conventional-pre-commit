@@ -1,7 +1,8 @@
 import re
 
-CONVENTIONAL_TYPES = ["feat", "fix"]
 DEFAULT_TYPES = [
+    "feat",
+    "fix",
     "build",
     "chore",
     "ci",
@@ -39,13 +40,6 @@ def r_subject():
     return r" .+"
 
 
-def conventional_types(types=[]):
-    """Return a list of Conventional Commits types merged with the given types."""
-    if set(types) & set(CONVENTIONAL_TYPES) == set():
-        return CONVENTIONAL_TYPES + types
-    return types
-
-
 def is_conventional(input, types=DEFAULT_TYPES, optional_scope=True):
     """
     Returns True if input matches Conventional Commits formatting
@@ -53,7 +47,7 @@ def is_conventional(input, types=DEFAULT_TYPES, optional_scope=True):
 
     Optionally provide a list of additional custom types.
     """
-    types = conventional_types(types)
+    types = set(types)
     pattern = f"^({r_types(types)}){r_scope(optional_scope)}{r_delim()}{r_subject()}$"
     regex = re.compile(pattern, re.DOTALL)
 
