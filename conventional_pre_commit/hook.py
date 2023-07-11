@@ -47,6 +47,8 @@ See {Colors.LBLUE}https://git-scm.com/docs/git-commit/#_discussion{Colors.RESTOR
         )
         return RESULT_FAIL
 
+    print(len(message))
+
     if not (1 <= len(message) <= 72):
         print(
             f"""
